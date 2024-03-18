@@ -36,12 +36,12 @@ jobs:
         with:
           python-version: ${{matrix.python-version}}
       - name: Install dependencies
-        run:
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+        run: |
+         python -m pip install --upgrade pip
+         pip install -r requirements.txt
       - name: Pytest
-        run:
-          airflow webserver &
-          airflow db init
-          airflow scheduler &
-          pytest tests/
+        run: |
+            airflow webserver &
+            airflow db init
+            airflow scheduler &
+            pytest tests/
